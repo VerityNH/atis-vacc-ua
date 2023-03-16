@@ -4,4 +4,5 @@ export type Weather = {
   temperature: number;
   dewPoint: number;
   tl: number;
+  visibility: number;
 };
