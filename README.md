@@ -1,6 +1,6 @@
-# [vACC Ukraine](https://vacc-ua.org) [ATIS](https://atis-vacc-ua.up.railway.app)
+# [vACC Ukraine](https://vacc-ua.org) [ATIS](atisvaccua.up.railway.app)
 
-URL for Euroscope: https://atis-vacc-ua.up.railway.app/?icao=$atisairport&rw=$arrrwy($atisairport)&code=$atiscode
+URL for Euroscope: https://atisvaccua.up.railway.app/?icao=$atisairport&rw=$arrrwy($atisairport)&code=$atiscode
 
 Where:
 
