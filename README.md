@@ -1,6 +1,6 @@
-# [vACC Ukraine](https://vacc-ua.org) [ATIS](atisvaccua.up.railway.app)
+# [vACC Ukraine](https://vacc-ua.org) [ATIS](https://atis-vacc-ua.up.railway.app)
 
-URL for Euroscope: https://atisvaccua.up.railway.app/?icao=$atisairport&rw=$arrrwy($atisairport)&code=$atiscode
+URL for Euroscope: https://atis-vacc-ua.up.railway.app/?icao=$atisairport&rw=$arrrwy($atisairport)&code=$atiscode
 
 Where:
 
@@ -17,6 +17,6 @@ Where:
 
 - Clone the repository
 - Open cloned directory and run `npm install`
-- Create your own `.env` file and put your keys there (you can find example inside `.env.sample`)
+- Create your own `.env` file and put your openweathermap API key there (you can find example inside `.env.sample`)
 - Run `npm run start:dev` to start application
 - Run `npm run test:watch` to run tests

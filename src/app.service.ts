@@ -1,31 +1,11 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import axios from 'axios';
 import { Dto } from './dto';
+import { getLocation } from './modules/getLocation';
 import { Location, Weather } from './types';
 
 @Injectable()
 export class AppService {
-  async getLocation(icao): Promise<Location> {
-    const url = `https://aeroapi.flightaware.com/aeroapi/airports/${icao}`;
-    const config = {
-      headers: {
-        'x-apikey': process.env.AIRPORT_KEY,
-      },
-    };
-    return axios
-      .get(url, config)
-      .then((res) => {
-        return {
-          lon: res.data.longitude,
-          lat: res.data.latitude,
-          name: res.data.city.toUpperCase(),
-        };
-      })
-      .catch(() => {
-        throw new NotFoundException();
-      });
-  }
-
   async getWeather(location: Location): Promise<Weather> {
     const key = process.env.WEATHER_KEY;
     const url = `https://api.openweathermap.org/data/3.0/onecall?lon=${location.lon}&lat=${location.lat}&units=metric&exclude=minutely,hourly,daily,alerts&appid=${key}`;
@@ -56,7 +36,8 @@ export class AppService {
   }
 
   async getAtis(data: Dto): Promise<string> {
-    const location: Location = await this.getLocation(data.icao);
+    const location: Location = getLocation(data.icao.toUpperCase());
+    if (!location) throw new NotFoundException();
     const weather: Weather = await this.getWeather(location);
     weather.wind[0] = Math.round(weather.wind[0] / 10) * 10;
     if (weather.wind[0] == 0) weather.wind[0] = 360;
@@ -64,7 +45,7 @@ export class AppService {
       hours: new Date().getUTCHours(),
       minutes: new Date().getUTCMinutes(),
       getTime: function () {
-        if (this.hours <= 10) this.hours = `0${this.hours}`;
+        if (this.hours < 10) this.hours = `0${this.hours}`;
         if (this.minutes >= 30) return `${this.hours}30`;
         else return `${this.hours}00`;
       },
