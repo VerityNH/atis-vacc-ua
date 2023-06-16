@@ -1,2 +1,2 @@
-export * from "./location.type"
+export * from "./airport.type"
 export * from "./weather.type"

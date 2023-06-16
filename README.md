@@ -1,12 +1,12 @@
 # [vACC Ukraine](https://vacc-ua.org) [ATIS](https://atisvaccua.up.railway.app)
 
-URL for Euroscope: https://atisvaccua.up.railway.app/?icao=$atisairport&rw=$arrrwy($atisairport)&code=$atiscode
+URL for Euroscope: https://atisvaccua.up.railway.app/?icao=$atisairport&code=$atiscode&rw=$arrrwy($atisairport)
 
 Where:
 
 - icao = ICAO code of requested airport (e.g. UKBB)
-- rw = runway in use (e.g. 36R)
 - code = current ATIS information letter (e.g. C)
+- rw = runway in use, optional (e.g. 36R)
 
 ## To run locally
 
